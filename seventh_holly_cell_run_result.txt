@@ -1,0 +1,17 @@
+(4, spark i j k) --> prob=[0.15964077387874112,0.8403592261212589], prediction=1.0
+(5, l m n) --> prob=[0.8378325685476613,0.16216743145233867], prediction=0.0
+(6, spark hadoop spark) --> prob=[0.06926633132976262,0.9307336686702374], prediction=1.0
+(7, apache hadoop) --> prob=[0.9821575333444208,0.01784246665557917], prediction=0.0
+import org.apache.spark.ml.{Pipeline, PipelineModel}
+import org.apache.spark.ml.classification.LogisticRegression
+import org.apache.spark.ml.feature.{HashingTF, Tokenizer}
+import org.apache.spark.ml.linalg.Vector
+import org.apache.spark.sql.Row
+training: org.apache.spark.sql.DataFrame = [id: bigint, text: string ... 1 more field]
+tokenizer: org.apache.spark.ml.feature.Tokenizer = tok_8fc6ed022b34
+hashingTF: org.apache.spark.ml.feature.HashingTF = hashingTF_96aa60156264
+lr: org.apache.spark.ml.classification.LogisticRegression = logreg_4d7a265859f5
+pipeline: org.apache.spark.ml.Pipeline = pipeline_b8dfb05a6e8b
+model: org.apache.spark.ml.PipelineModel = pipeline_b8dfb05a6e8b
+sameModel: org.apache.spark.ml.PipelineModel = pipeline_b8dfb05a6e8b
+test: org.apache.spark.sql.DataFrame = [id: bigint, text: string]
