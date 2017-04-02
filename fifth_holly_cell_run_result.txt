@@ -1,0 +1,47 @@
+Passengers has 1309 rows
+root
+ |-- Pclass: integer (nullable = true)
+ |-- Survived: integer (nullable = true)
+ |-- Gender: string (nullable = true)
+ |-- Age: double (nullable = true)
+ |-- SibSp: integer (nullable = true)
+ |-- Parch: integer (nullable = true)
+ |-- Fare: double (nullable = true)
+
++------+--------+------+------+-----+-----+--------+
+|Pclass|Survived|Gender|   Age|SibSp|Parch|    Fare|
++------+--------+------+------+-----+-----+--------+
+|     1|       1|female|  29.0|    0|    0|211.3375|
+|     1|       1|  male|0.9167|    1|    2|  151.55|
+|     1|       0|female|   2.0|    1|    2|  151.55|
+|     1|       0|  male|  30.0|    1|    2|  151.55|
+|     1|       0|female|  25.0|    1|    2|  151.55|
+|     1|       1|  male|  48.0|    0|    0|   26.55|
+|     1|       1|female|  63.0|    1|    0| 77.9583|
+|     1|       0|  male|  39.0|    0|    0|     0.0|
+|     1|       1|female|  53.0|    2|    0| 51.4792|
+|     1|       0|  male|  71.0|    0|    0| 49.5042|
+|     1|       0|  male|  47.0|    1|    0| 227.525|
+|     1|       1|female|  18.0|    1|    0| 227.525|
+|     1|       1|female|  24.0|    0|    0|    69.3|
+|     1|       1|female|  26.0|    0|    0|   78.85|
+|     1|       1|  male|  80.0|    0|    0|    30.0|
+|     1|       0|  male|  null|    0|    0|  25.925|
+|     1|       0|  male|  24.0|    0|    1|247.5208|
+|     1|       1|female|  50.0|    0|    1|247.5208|
+|     1|       1|female|  32.0|    0|    0| 76.2917|
+|     1|       0|  male|  36.0|    0|    0| 75.2417|
++------+--------+------+------+-----+-----+--------+
+only showing top 20 rows
+
++---------------+------+----+
+|Survived_Gender|female|male|
++---------------+------+----+
+|              1|   339| 161|
+|              0|   127| 682|
++---------------+------+----+
+
+import org.apache.spark.sql.functions._
+filePath: String = /FileStore/tables/0bbiuyxm1491172678670/titanic3_02.csv
+passengers: org.apache.spark.sql.DataFrame = [Pclass: int, Survived: int ... 12 more fields]
+passengers1: org.apache.spark.sql.DataFrame = [Pclass: int, Survived: int ... 5 more fields]
