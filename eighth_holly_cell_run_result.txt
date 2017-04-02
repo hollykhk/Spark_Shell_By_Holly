@@ -1,0 +1,39 @@
+(4, spark i j k) --> prob=[0.12566260711357224,0.8743373928864279], prediction=1.0
+(5, l m n) --> prob=[0.995215441016286,0.004784558983714], prediction=0.0
+(6, mapreduce spark) --> prob=[0.30696895232625965,0.6930310476737404], prediction=1.0
+(7, apache hadoop) --> prob=[0.8040279442401378,0.19597205575986223], prediction=0.0
+import org.apache.spark.ml.Pipeline
+import org.apache.spark.ml.classification.LogisticRegression
+import org.apache.spark.ml.evaluation.BinaryClassificationEvaluator
+import org.apache.spark.ml.feature.{HashingTF, Tokenizer}
+import org.apache.spark.ml.linalg.Vector
+import org.apache.spark.ml.tuning.{CrossValidator, ParamGridBuilder}
+import org.apache.spark.sql.Row
+training: org.apache.spark.sql.DataFrame = [id: bigint, text: string ... 1 more field]
+tokenizer: org.apache.spark.ml.feature.Tokenizer = tok_fa350c3152a0
+hashingTF: org.apache.spark.ml.feature.HashingTF = hashingTF_6d6c2158b636
+lr: org.apache.spark.ml.classification.LogisticRegression = logreg_825587a8adaa
+pipeline: org.apache.spark.ml.Pipeline = pipeline_146b921b8a65
+paramGrid: Array[org.apache.spark.ml.param.ParamMap] = 
+Array({
+	hashingTF_6d6c2158b636-numFeatures: 10,
+	logreg_825587a8adaa-regParam: 0.1
+}, {
+	hashingTF_6d6c2158b636-numFeatures: 10,
+	logreg_825587a8adaa-regParam: 0.01
+}, {
+	hashingTF_6d6c2158b636-numFeatures: 100,
+	logreg_825587a8adaa-regParam: 0.1
+}, {
+	hashingTF_6d6c2158b636-numFeatures: 100,
+	logreg_825587a8adaa-regParam: 0.01
+}, {
+	hashingTF_6d6c2158b636-numFeatures: 1000,
+	logreg_825587a8adaa-regParam: 0.1
+}, {
+	hashingTF_6d6c2158b636-numFeatures: 1000,
+	logreg_825587a8adaa-regParam: 0.01
+})
+cv: org.apache.spark.ml.tuning.CrossValidator = cv_a8ab707c3d8a
+cvModel: org.apache.spark.ml.tuning.CrossValidatorModel = cv_a8ab707c3d8a
+test: org.apache.spark.sql.DataFrame = [id: bigint, text: string]
